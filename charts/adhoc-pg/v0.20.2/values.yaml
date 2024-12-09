@@ -6,7 +6,7 @@ image:
   repository: postgres
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "15"
+  tag: "17"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -46,9 +46,9 @@ resources:
   #    cpu: 6000m
   #    memory: 168960Mi
   # Request para tener visibilidad si intenta schedulear y no encuentra nodo (definimos 50GB / 25GB y 40GB / 20GB en pgtune)
-  requests:
-    cpu: 3000m
-    memory: 50Gi
+  #requests:
+  #  cpu: 3000m
+  #  memory: 50Gi
 
 autoscaling:
   enabled: false
@@ -67,7 +67,7 @@ pg:
   data: ""
   db: "postgres"
   user: "odoo"
-  pass: ""
+  pass: "12345"
   port: 5432
   args:
     logLinePrefix: '[%u %d] [%p]'
@@ -95,7 +95,7 @@ pg:
     statementsTrack: all
   extraArgs:
   # prod = 500, demo = 100, boggio = 400
-  diskSize: 500
+  diskSize: 5
 
 killer:
   enabled: true
